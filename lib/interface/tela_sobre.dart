@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:terceira_prova/persistencia/pokemon_dao.dart';
 import 'package:terceira_prova/widget/card_dev.dart';
 
 class TelaSobre extends StatelessWidget {
-  const TelaSobre({super.key});
+  final PokemonDao pokemonDao;
+
+  const TelaSobre({
+    super.key,
+    required this.pokemonDao,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +35,7 @@ class TelaSobre extends StatelessWidget {
       ),
       drawer: Drawer(
         child: TextButton( 
-          child: const Text('home'),
+          child: const Text('Home'),
           onPressed: () {
             Navigator.pop(context);
             Navigator.pop(context);

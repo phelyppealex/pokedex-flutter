@@ -1,28 +1,69 @@
 
 import 'package:flutter/material.dart';
+import 'package:terceira_prova/interface/tela_captura.dart';
+import 'package:terceira_prova/interface/tela_pokemon_capturado.dart';
 import 'package:terceira_prova/interface/tela_sobre.dart';
+import 'package:terceira_prova/persistencia/pokemon_dao.dart';
+import 'package:terceira_prova/widget/sobre_app.dart';
 
 class TelaHome extends StatelessWidget {
-  const TelaHome({super.key});
+  final PokemonDao pokemonDao;
+
+  const TelaHome({
+    super.key,
+    required this.pokemonDao,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pokédex'),
+        title: const Text('Pokédex'),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.red,
       ),
-      body: Text('Corpo'),
-      drawer: TextButton(
-        child: Text('sobre'),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => TelaSobre()
+      body: const SobreApp(),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              child: const Text('CAPTURAR POKEMONS'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TelaCaptura(pokemonDao: pokemonDao)
+                  ),
+                );
+              },
             ),
-          );
-        } ,
-      ),
+            TextButton(
+              child: const Text('POKEMONS CAPTURADOS'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TelaPokemonCapturado(pokemonDao: pokemonDao)
+                  ),
+                );
+              },
+            ),
+            TextButton(
+              child: const Text('SOBRE NÓS'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TelaSobre(pokemonDao: pokemonDao)
+                  ),
+                );
+              },
+            ),
+          ]
+        )
+      )
     );
   }
 }

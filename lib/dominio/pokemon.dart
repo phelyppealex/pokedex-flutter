@@ -6,10 +6,11 @@ class Pokemon {
   int? id;
   String nome;
   String especie;
-  double altura;
-  double peso;
+  int altura;
+  int peso;
   String habilidade;
   String tipo;
+  String imagem;
 
   Pokemon({
     this.id,
@@ -19,5 +20,6 @@ class Pokemon {
     required this.peso,
     required this.habilidade,
     required this.tipo,
+    required this.imagem,
   });
 }
