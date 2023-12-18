@@ -36,7 +36,6 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
           
           String url = 'https://pokeapi.co/api/v2/pokemon/$indice/';
           
-          
           final resposta = await http.get(
             Uri.parse(url)
           );
@@ -100,7 +99,7 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
                               tipo: snapshot.data![i]['types'][0]['type']['name'],
                               imagem: snapshot.data![i]['sprites']['front_default']
                             );
-                            print(p);
+                            
                             widget.pokemonDao.inserirPokemon(p);
                           },
                       )

@@ -172,6 +172,21 @@ class _$PokemonDao extends PokemonDao {
   }
 
   @override
+  Future<List<Pokemon>> listarPorNome(String nome) async {
+    return _queryAdapter.queryList('SELECT * FROM Pokemon WHERE nome = ?1',
+        mapper: (Map<String, Object?> row) => Pokemon(
+            id: row['id'] as int?,
+            nome: row['nome'] as String,
+            especie: row['especie'] as String,
+            altura: row['altura'] as int,
+            peso: row['peso'] as int,
+            habilidade: row['habilidade'] as String,
+            tipo: row['tipo'] as String,
+            imagem: row['imagem'] as String),
+        arguments: [nome]);
+  }
+
+  @override
   Future<void> inserirPokemon(Pokemon p) async {
     await _pokemonInsertionAdapter.insert(p, OnConflictStrategy.abort);
   }

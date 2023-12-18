@@ -9,6 +9,9 @@ abstract class PokemonDao {
   @Query('SELECT * FROM Pokemon WHERE id = :id')
   Future<List<Pokemon>> listarPorId(int id);
 
+  @Query('SELECT * FROM Pokemon WHERE nome = :nome')
+  Future<List<Pokemon>> listarPorNome(String nome);
+
   @insert
   Future<void> inserirPokemon(Pokemon p);
 
