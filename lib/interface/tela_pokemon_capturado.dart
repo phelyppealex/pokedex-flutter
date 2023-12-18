@@ -15,6 +15,7 @@ class TelaPokemonCapturado extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Meus Pokemons'),
+        foregroundColor: Colors.white,
         backgroundColor: Colors.red,
       ),
       body: ListarCapturados(pokemonDao: pokemonDao),
