@@ -24,9 +24,9 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
   late Future<List<dynamic>> pokemons;
   late List<int> pokemonsIndexes;
 
-
   Future<List<dynamic>> getPokemonsApi() async {
     final connectivityResult = await (Connectivity().checkConnectivity());
+    getPokemonsId();
 
     try{
       List<dynamic> data = [];
@@ -35,7 +35,6 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
         Random r = Random();
         for(var i = 0; i < 6; i++){
           int indice = r.nextInt(1017) + 1;
-          pokemonsIndexes.add(indice);
           
           String url = 'https://pokeapi.co/api/v2/pokemon/$indice/';
           
@@ -58,6 +57,18 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
     }
   }
 
+  Future<List<int>> getPokemonsId() async {
+    final pokemonsBD = await widget.pokemonDao.listarTodos();
+
+    List<int> indices = [];
+
+    for(var p in pokemonsBD){
+      indices.add(p.id!);
+    }
+
+    return indices;
+  }
+
   @override
   void initState(){
     super.initState();
@@ -74,12 +85,11 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
           return ListView.builder(
             itemCount: snapshot.data!.length,
             itemBuilder: (context, i){
-              
-              List<String> linkDiv = snapshot.data![i]['sprites']['front_default'].split('/');
+              List<String> linkDividido = snapshot.data![i]['sprites']['front_default'].split('/');
   
               String numero = '';
-              for(int i = 0; i < linkDiv[linkDiv.length-1].length-4; i++){
-                numero += linkDiv[linkDiv.length-1][i];
+              for(int i = 0; i < linkDividido[linkDividido.length-1].length-4; i++){
+                numero += linkDividido[linkDividido.length-1][i];
               }
               
               int n = int.parse(numero);
