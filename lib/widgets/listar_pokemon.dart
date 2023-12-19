@@ -75,9 +75,18 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
             itemCount: snapshot.data!.length,
             itemBuilder: (context, i){
               
+              List<String> linkDiv = snapshot.data![i]['sprites']['front_default'].split('/');
+  
+              String numero = '';
+              for(int i = 0; i < linkDiv[linkDiv.length-1].length-4; i++){
+                numero += linkDiv[linkDiv.length-1][i];
+              }
+              
+              int n = int.parse(numero);
+
               String pokebolaImage = 'pokebola';
 
-              if(pokemonsIndexes.contains(snapshot.data![i]['order'])){
+              if(pokemonsIndexes.contains(n)){
                 pokebolaImage = 'pokebola_sem_cor';
               }
 
@@ -101,8 +110,9 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
                           ),
                           label: Text(''),
                           onPressed: (){
+                            
                             Pokemon p = Pokemon(
-                              id: snapshot.data![i]['order'],
+                              id: n,
                               nome: snapshot.data![i]['name'],
                               especie: snapshot.data![i]['species']['name'],
                               altura: snapshot.data![i]['height'],
