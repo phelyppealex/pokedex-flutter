@@ -22,10 +22,12 @@ class ListarPokemonTC extends StatefulWidget {
 
 class _ListarPokemonTCState extends State<ListarPokemonTC> {
   late Future<List<dynamic>> pokemons;
+  late List<int> pokemonsIndexes;
+
 
   Future<List<dynamic>> getPokemonsApi() async {
     final connectivityResult = await (Connectivity().checkConnectivity());
-    
+
     try{
       List<dynamic> data = [];
 
@@ -33,6 +35,7 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
         Random r = Random();
         for(var i = 0; i < 6; i++){
           int indice = r.nextInt(1017) + 1;
+          pokemonsIndexes.add(indice);
           
           String url = 'https://pokeapi.co/api/v2/pokemon/$indice/';
           
@@ -59,6 +62,7 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
   void initState(){
     super.initState();
     pokemons = getPokemonsApi();
+    pokemonsIndexes = [];
   }
 
   @override
@@ -70,6 +74,13 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
           return ListView.builder(
             itemCount: snapshot.data!.length,
             itemBuilder: (context, i){
+              
+              String pokebolaImage = 'pokebola';
+
+              if(pokemonsIndexes.contains(snapshot.data![i]['order'])){
+                pokebolaImage = 'pokebola_sem_cor';
+              }
+
               return Center(
                 child: Card(
                   clipBehavior: Clip.hardEdge,
@@ -84,13 +95,14 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
                       ),
                       TextButton.icon(
                         icon: Image.asset(
-                            'images/pokebola.png',
+                            'images/$pokebolaImage.png',
                             width: 60,
                             height: 60,
                           ),
                           label: Text(''),
                           onPressed: (){
                             Pokemon p = Pokemon(
+                              id: snapshot.data![i]['order'],
                               nome: snapshot.data![i]['name'],
                               especie: snapshot.data![i]['species']['name'],
                               altura: snapshot.data![i]['height'],
@@ -101,6 +113,12 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
                             );
                             
                             widget.pokemonDao.inserirPokemon(p);
+
+                            setState(() {
+                              pokemons = pokemons;
+                              pokemonsIndexes.add(p.id!);
+                              print('passei aq');
+                            });
                           },
                       )
                     ],
