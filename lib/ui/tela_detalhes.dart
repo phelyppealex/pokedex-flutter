@@ -68,12 +68,47 @@ class _TelaDetalhesState extends State<TelaDetalhes> {
             return Center(
               child: Column(
                 children: [
-                  Image.network(snapshot.data!['sprites']['front_default']),
-                  Text(snapshot.data!['name'].toUpperCase()),
-                  Text('Espécie: ${snapshot.data!['species']['name']}'),
-                  Text('Tipos: $tipos'),
-                  Text('Habilidades: $habilidades'),
-                  Text(estatisticas),
+                  Image.network(snapshot.data!['sprites']['front_default'], scale: 0.3,),
+                  Card(
+                    elevation: 2.5,
+                    color: Colors.blue.shade200,
+                    
+                    child: Column(
+                      children:[
+                        Text(snapshot.data!['name'].toUpperCase()),
+                        const Text('\nEstatisticas:'),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(estatisticas),
+                          ],
+                        ),
+                        const Text('\nHabilidades:'),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(habilidades),
+                          ]
+                        ),
+                      ]
+                    )
+                  ),
+                  const Text('\nTipos:'),
+                  Container(
+                    padding: const EdgeInsets.only(left: 100,right: 100),
+                    child: Column(
+                      children: [
+                        Card(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(tipos),
+                            ],
+                          )
+                        ),
+                      ]
+                    ),
+                  )
                 ],
               ),
             );
