@@ -8,9 +8,9 @@ class ListarCapturados extends StatefulWidget {
   final PokemonDao pokemonDao;
 
   const ListarCapturados({
-    Key? key,
+    super.key,
     required this.pokemonDao,
-  }) : super(key: key);
+  });
 
   @override
   State<ListarCapturados> createState() => ListarCapturadosState();
@@ -49,11 +49,12 @@ class ListarCapturadosState extends State<ListarCapturados> {
                     ],
                   ),
                   onTap: () {
-                    Pokemon p = snapshot.data![i];
+                    int indice = snapshot.data![i].id!;
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => TelaDetalhes(pokemon: p),
+                        builder: (context) => TelaDetalhes(indice),
                       ),
                     );
                   },
@@ -70,7 +71,9 @@ class ListarCapturadosState extends State<ListarCapturados> {
               );
             },
           );
-        } else if (snapshot.hasError) {
+        } else if(!snapshot.hasData){
+          return const Text('Nenhum pokemon capturado ainda, tente abrir a tela de captura de pokemons..');
+        }else if (snapshot.hasError) {
           throw Text('${snapshot.error}');
         } else {
           throw Error;

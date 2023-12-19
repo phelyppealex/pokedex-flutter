@@ -14,9 +14,9 @@ class TelaSobre extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Sobre os Desenvolvedores'),
         foregroundColor: Colors.white,
         backgroundColor: Colors.red,
-        title: const Text('Sobre os Desenvolvedores'),
       ),
       body: const Center (
         child: Column(

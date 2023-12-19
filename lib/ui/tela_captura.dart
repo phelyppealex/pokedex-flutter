@@ -10,9 +10,9 @@ class TelaCaptura extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Tela Captura'),
         foregroundColor: Colors.white,
         backgroundColor: Colors.red,
-        title: const Text('Tela Captura'),
       ),
       body: ListarPokemonTC(pokemonDao: pokemonDao),
     );
