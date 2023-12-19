@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:terceira_prova/persistencia/pokemon_dao.dart';
-import 'package:terceira_prova/widget/card_dev.dart';
+import 'package:terceira_prova/persistence/pokemon_dao.dart';
+import 'package:terceira_prova/widgets/card_dev.dart';
 
 class TelaSobre extends StatelessWidget {
   final PokemonDao pokemonDao;
@@ -33,16 +33,6 @@ class TelaSobre extends StatelessWidget {
               github: 'https://github.com/phelyppealex',
             )
           ],
-        ),
-      ),
-      drawer: Drawer(
-        child: TextButton( 
-          child: const Text('Home'),
-          onPressed: () {
-            Navigator.pop(context);
-            Navigator.pop(context);
-            Navigator.pop(context);
-          },
         ),
       ),
     );

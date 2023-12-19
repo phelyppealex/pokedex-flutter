@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:terceira_prova/dominio/pokemon.dart';
+import 'package:terceira_prova/model/pokemon.dart';
 
 class TelaDetalhes extends StatelessWidget {
   final Pokemon pokemon;

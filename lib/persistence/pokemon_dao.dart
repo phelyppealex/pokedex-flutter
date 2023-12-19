@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:terceira_prova/dominio/pokemon.dart';
+import 'package:terceira_prova/model/pokemon.dart';
 
 @dao
 abstract class PokemonDao {

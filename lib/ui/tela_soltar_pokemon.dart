@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:terceira_prova/dominio/pokemon.dart';
-import 'package:terceira_prova/persistencia/pokemon_dao.dart';
+import 'package:terceira_prova/model/pokemon.dart';
+import 'package:terceira_prova/persistence/pokemon_dao.dart';
 
 class TelaSoltar extends StatelessWidget {
   final Pokemon pokemon;

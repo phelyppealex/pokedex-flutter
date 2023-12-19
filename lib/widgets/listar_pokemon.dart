@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:terceira_prova/dominio/pokemon.dart';
-import 'package:terceira_prova/persistencia/pokemon_dao.dart';
+import 'package:terceira_prova/model/pokemon.dart';
+import 'package:terceira_prova/persistence/pokemon_dao.dart';
 
 class ListarPokemonTC extends StatefulWidget {
   final PokemonDao pokemonDao; 
@@ -117,7 +117,6 @@ class _ListarPokemonTCState extends State<ListarPokemonTC> {
                             setState(() {
                               pokemons = pokemons;
                               pokemonsIndexes.add(p.id!);
-                              print('passei aq');
                             });
                           },
                       )

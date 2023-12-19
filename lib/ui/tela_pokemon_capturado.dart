@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:terceira_prova/persistencia/pokemon_dao.dart';
-import 'package:terceira_prova/widget/listar_capturados.dart';
+import 'package:terceira_prova/persistence/pokemon_dao.dart';
+import 'package:terceira_prova/widgets/listar_capturados.dart';
 
 class TelaPokemonCapturado extends StatelessWidget {
   final PokemonDao pokemonDao;

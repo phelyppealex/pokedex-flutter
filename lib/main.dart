@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:terceira_prova/interface/tela_home.dart';
+import 'package:terceira_prova/ui/tela_home.dart';
 import 'package:terceira_prova/database/app_database.dart';
-import 'package:terceira_prova/persistencia/pokemon_dao.dart';
+import 'package:terceira_prova/persistence/pokemon_dao.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

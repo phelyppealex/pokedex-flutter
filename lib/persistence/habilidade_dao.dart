@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:terceira_prova/dominio/habilidade.dart';
+import 'package:terceira_prova/model/habilidade.dart';
 
 @dao
 abstract class HabilidadeDao {

@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:terceira_prova/dominio/tipo.dart';
+import 'package:terceira_prova/model/tipo.dart';
 
 @dao
 abstract class TipoDao {

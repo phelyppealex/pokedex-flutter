@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:terceira_prova/interface/tela_captura.dart';
-import 'package:terceira_prova/interface/tela_pokemon_capturado.dart';
-import 'package:terceira_prova/interface/tela_sobre.dart';
-import 'package:terceira_prova/persistencia/pokemon_dao.dart';
-import 'package:terceira_prova/widget/sobre_app.dart';
+import 'package:terceira_prova/ui/tela_captura.dart';
+import 'package:terceira_prova/ui/tela_pokemon_capturado.dart';
+import 'package:terceira_prova/ui/tela_sobre.dart';
+import 'package:terceira_prova/persistence/pokemon_dao.dart';
+import 'package:terceira_prova/widgets/sobre_app.dart';
 
 class TelaHome extends StatelessWidget {
   final PokemonDao pokemonDao;
