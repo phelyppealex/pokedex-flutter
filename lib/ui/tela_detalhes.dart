@@ -57,39 +57,40 @@ class _TelaDetalhesState extends State<TelaDetalhes> {
 
             // HABILIDADES
             for(var h in snapshot.data!['abilities']){
-              habilidades = '$habilidades  - ${h["ability"]["name"]}\n';
+              habilidades = '$habilidades  - ${h["ability"]["name"].toUpperCase()}\n';
             }
 
             // ESTATÍSTICAS
             for(var e in snapshot.data!['stats']){
-              estatisticas = '$estatisticas${e["stat"]["name"].toUpperCase()}: ${e["base_stat"]}\n';
+              estatisticas = '$estatisticas${e["base_stat"]} - ${e["stat"]["name"].toUpperCase()}\n';
             }
 
             return Center(
               child: Column(
                 children: [
-                  Image.network(snapshot.data!['sprites']['front_default'], scale: 0.3,),
+                  Image.network(snapshot.data!['sprites']['other']['official-artwork']['front_default'], scale: 0.3,),
                   Card(
                     elevation: 2.5,
                     color: Colors.blue.shade200,
-                    
                     child: Column(
                       children:[
-                        Text(snapshot.data!['name'].toUpperCase()),
-                        const Text('\nEstatisticas:'),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(estatisticas),
-                          ],
-                        ),
-                        const Text('\nHabilidades:'),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(habilidades),
+                        Text('${snapshot.data!['name'].toUpperCase()}',style: const TextStyle(fontWeight: FontWeight.bold)),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children:[
+                            Text('\nEstatisticas:',  style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text('\nHabilidades:',  style: TextStyle(fontWeight: FontWeight.bold)),
                           ]
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(estatisticas),
+                            Text(habilidades,),
+                          ],
+                        ),
+                        
+                      
                       ]
                     )
                   ),

@@ -11,10 +11,10 @@ Future<void> abrirUrl (String link) async {
 }
 
 class CardDev extends StatelessWidget {
-  final nome;
-  final email;
-  final github;
-  final imagem;
+  final String nome;
+  final String email;
+  final String github;
+  final String imagem;
 
   const CardDev({
     super.key,
