@@ -22,12 +22,13 @@ class TelaSobre extends StatelessWidget {
         child: Column(
           children: [
             CardDev(
+              imagem: 'images/erick.png',
               nome: 'Erick Barros',
               email: 'ehbs.13579@gmail.com',
               github: 'https://github.com/erickhbs',
             ),
-            SizedBox(height: 50),
             CardDev(
+              imagem: 'images/phelyppe.jpg',
               nome: 'Phelyppe Álex',
               email: 'phelyppesilva@gmail.com',
               github: 'https://github.com/phelyppealex',
