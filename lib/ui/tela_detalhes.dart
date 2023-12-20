@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:terceira_prova/widgets/animacao_carregamento.dart';
 
 class TelaDetalhes extends StatefulWidget {
   final int pokemonId;
@@ -71,7 +72,7 @@ class _TelaDetalhesState extends State<TelaDetalhes> {
                   Image.network(snapshot.data!['sprites']['other']['official-artwork']['front_default'], scale: 0.3,),
                   Card(
                     elevation: 2.5,
-                    color: Colors.blue.shade200,
+                    color: Color.fromARGB(255, 255, 192, 192),
                     child: Column(
                       children:[
                         Text('${snapshot.data!['name'].toUpperCase()}',style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -114,7 +115,9 @@ class _TelaDetalhesState extends State<TelaDetalhes> {
               ),
             );
           }else{
-            return const Placeholder();
+            return const Center(
+              child: AnimacaoCarregamento(),
+            );
           }
         },
       ),

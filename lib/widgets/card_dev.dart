@@ -31,15 +31,15 @@ class CardDev extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(10),
             child: ClipOval(
               child: Image.asset(
                 imagem
               ),
             ),
           ),
-          Text(nome),
-          const SizedBox(height: 10.5),
+          Text('\n$nome'),
+          const SizedBox(height: 9.5),
           TextButton(
             child: const Text('Enviar email'),
             onPressed: () async {

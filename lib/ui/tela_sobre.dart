@@ -18,23 +18,22 @@ class TelaSobre extends StatelessWidget {
         foregroundColor: Colors.white,
         backgroundColor: Colors.red,
       ),
-      body: const Center (
-        child: Column(
-          children: [
-            CardDev(
-              imagem: 'images/erick.png',
-              nome: 'Erick Barros',
-              email: 'ehbs.13579@gmail.com',
-              github: 'https://github.com/erickhbs',
-            ),
-            CardDev(
-              imagem: 'images/phelyppe.jpg',
-              nome: 'Phelyppe Álex',
-              email: 'phelyppesilva@gmail.com',
-              github: 'https://github.com/phelyppealex',
-            )
-          ],
-        ),
+      body: GridView.count(
+        crossAxisCount: 1,
+        children: const [
+          CardDev(
+            imagem: 'images/phelyppe.jpg',
+            nome: 'Phelyppe Álex',
+            email: 'phelyppesilva@gmail.com',
+            github: 'https://github.com/phelyppealex',
+          ),
+          CardDev(
+            imagem: 'images/erick.jpg',
+            nome: 'Erick Barros',
+            email: 'ehbs.13579@gmail.com',
+            github: 'https://github.com/erickhbs',
+          ),
+        ]
       ),
     );
   }

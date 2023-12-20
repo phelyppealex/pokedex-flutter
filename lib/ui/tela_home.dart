@@ -26,8 +26,13 @@ class TelaHome extends StatelessWidget {
       drawer: Drawer(
         backgroundColor: Colors.white,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: Image.asset('images/pokemon_logo.png'),
+            ),
+            const SizedBox(height: 50),
             TextButton(
               child: const Text('CAPTURAR POKEMONS'),
               onPressed: () {

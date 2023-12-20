@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:terceira_prova/model/pokemon.dart';
 import 'package:terceira_prova/persistence/pokemon_dao.dart';
+import 'package:terceira_prova/ui/tela_pokemon_capturado.dart';
+import 'package:terceira_prova/widgets/listar_capturados.dart';
 
 class TelaSoltar extends StatelessWidget {
   final Pokemon pokemon;
@@ -34,10 +36,45 @@ class TelaSoltar extends StatelessWidget {
               Text('Deseja mesmo soltá-lo?'),
               FloatingActionButton(
                 onPressed: () async {
-                  await pokemonDao.deletarPokemon(pokemon);
-                  Navigator.pop(context);
+                  Widget cancelButton = TextButton(
+                    child: Text("Cancelar"),
+                    onPressed:  () {
+                      Navigator.pop(context);
+                    },
+                  );
+                  Widget continueButton = TextButton(
+                    child: Text("Soltá-lo"),
+                    onPressed:  () {
+                      pokemonDao.deletarPokemon(pokemon);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TelaPokemonCapturado(pokemonDao: pokemonDao),
+                        )
+                      );
+                    },
+                  );
+                  // set up the AlertDialog
+                  AlertDialog alert = AlertDialog(
+                    title: Text("Soltar"),
+                    content: Text("Deseja realmente soltar o ${pokemon.nome.toUpperCase()}"),
+                    actions: [
+                      cancelButton,
+                      continueButton,
+                    ],
+                  );
+                  
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return alert;
+                    },
+                  );
                 },
-                child: Icon(Icons.delete),
+                child: const Icon(Icons.delete),
               )
             ],
           ),
